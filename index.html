@@ -25,330 +25,285 @@ FALTA: {{DOMINIO_FINAL}} si se usa un dominio propio.
 <meta name="description" content="Seis cuadernos imprimibles con 240 ejercicios de estimulación cognitiva para personas mayores. Letra grande, soluciones y tres bonos incluidos.">
 <link rel="icon" href="assets/favicon.ico">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preload" as="image" href="assets/hero-mockup.webp">
+<link rel="preload" as="image" href="img/hero-mockup.webp" imagesrcset="img/hero-mockup-800.webp 800w, img/hero-mockup.webp 1600w" imagesizes="(min-width: 768px) 94vw, 100vw" media="(width < 1024px)">
+<link rel="preload" as="image" href="img/hero-mockup-desktop.webp" media="(min-width: 1024px)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es">
+<meta property="og:title" content="PsicoVida | 240 ejercicios para la mente">
+<meta property="og:description" content="6 cuadernos imprimibles y 3 bonos para compartir con personas mayores.">
+<meta property="og:image" content="img/hero-mockup.webp">
 <style>
-:root{--red:#9e2229;--deep:#741a24;--wine:#3a1c20;--ink:#2c2322;--muted:#604d4a;--cream:#fff8ef;--paper:#fffdf9;--line:#e9d8cd;--tint:#f5e8dc;--gold:#ffd98a;--top:66px;--display:Georgia,serif;--shadow:0 5px 18px #49272713}
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--cream);color:var(--ink);font:17px/1.45 system-ui,sans-serif;padding-top:var(--top)}
-body:has(.sticky.is-visible){padding-bottom:calc(75px + env(safe-area-inset-bottom))}
-img{display:block;max-width:100%;height:auto}h1,h2,h3,p,figure,ul,ol{margin:0}
-h1,h2{font-family:var(--display);text-wrap:balance;line-height:1.09;letter-spacing:-.036em}
-h1{font-size:clamp(24px,7.25vw,33px)}h2{font-size:clamp(30px,7.5vw,38px)}h3{font-size:18px;line-height:1.2}
-a{color:inherit}a:focus-visible,summary:focus-visible{outline:3px solid #c57d36;outline-offset:3px}
-.wrap{width:min(100% - 32px,1080px);margin-inline:auto}.section{padding-block:56px;border-top:1px solid var(--line)}
-.copy{max-width:52ch;color:var(--muted)}.stack>*+*{margin-top:15px}
-.eyebrow{font-size:12px;letter-spacing:.12em;font-weight:800;text-transform:uppercase;color:var(--red)}
-.button{display:flex;min-height:54px;align-items:center;justify-content:center;border-radius:10px;background:var(--red);color:#fff;font-weight:750;text-align:center;text-decoration:none;padding:10px 12px;line-height:1.15}
-.button:hover{background:var(--deep)}.micro{font-size:13px;line-height:1.35;color:var(--muted);text-align:center}
-.icon{width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;color:var(--red)}
-.offer-top{position:fixed;z-index:4;inset:0 0 auto;background:var(--deep);color:white}
-.offer-top .wrap{min-height:var(--top);display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;line-height:1.2}
-.offer-top .was,.clock{white-space:nowrap}.clock{font-variant-numeric:tabular-nums;font-weight:800}
-.offer-top .clock{background:#fff6ea;color:var(--deep);border-radius:6px;padding:6px 7px;font-size:17px}
-.hero{padding-block:16px 20px}.hero-copy{display:contents}.hero-grid{display:grid;gap:9px;text-align:center}
-.hero-media{width:min(100%,188px);margin-inline:auto;border-radius:12px;overflow:hidden}.hero-media img{width:100%}
-.hero-buy{display:grid;gap:8px}.hero .copy{margin-inline:auto}
-.trust{background:var(--paper);border-block:1px solid var(--line);padding-block:15px}
-.trust .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;text-align:center}
-.trust span{display:grid;justify-items:center;align-content:start;gap:5px;font-size:12px;line-height:1.2;font-weight:720}
-.trust .icon{width:28px;height:28px}
-.reviews{background:var(--tint);text-align:center}.samples{background:var(--paper);text-align:center}
-.rotator{pointer-events:none;user-select:none;max-width:100%;margin-inline:auto}
-.rotator-grid{display:grid;justify-items:center;align-items:center}
-.frame{grid-area:1/1;position:relative;max-width:100%;opacity:0;transition:opacity 400ms ease}
-.frame.active{opacity:1;z-index:1}.frame img{object-fit:contain;width:auto;height:auto;max-width:100%;max-height:80vh;border-radius:10px;box-shadow:var(--shadow)}
-.testimonios{width:min(92vw,420px)}.testimonios img{aspect-ratio:auto}.paginas{width:min(100%,380px)}
-.photo-note{font-size:12px;margin-top:4px;color:var(--muted)}
-.dots{display:flex;justify-content:center;align-items:center;gap:7px;min-height:20px;margin-top:11px;pointer-events:none}
-.dots span{width:7px;height:7px;border-radius:50%;background:#bfa49d}
-.dots .active{width:17px;border-radius:8px;background:var(--red)}
-.caption{font-size:14px;color:var(--muted)}.reviews-caption{text-align:center}
-.pain-section{background:var(--paper)}.pain-grid{display:grid;gap:18px}
-.apoyo{grid-row:1;overflow:hidden;border-radius:16px;box-shadow:var(--shadow);max-width:420px}
-.apoyo img{width:100%}.pain,.catalog,.steps,.offer-list{list-style:none;padding:0;display:grid;gap:12px}
-.pain li,.catalog li,.steps li{background:var(--paper);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}
-.pain li{display:flex;align-items:flex-start;gap:12px;padding:15px}
-.cuadernos{background:var(--cream)}.catalog li{display:grid;grid-template-columns:84px minmax(0,1fr);gap:13px;align-items:center;padding:12px}
-.catalog img{width:100%;border-radius:4px}.catalog p{color:var(--muted);font-size:15px;margin-top:5px}
-.catalog .eyebrow{color:var(--red);font-size:12px;margin:0 0 6px}
-.steps-section{background:var(--cream)}.step-media{display:none;overflow:hidden;border-radius:16px;box-shadow:var(--shadow)}
-.step-media img{width:100%}.steps li{display:grid;gap:12px;padding:16px}
-.step-mark{display:flex;align-items:center;gap:12px;color:var(--red)}
-.step-mark span{font:700 36px/1 var(--display)}.step-mark .icon{width:29px;height:29px}
-.bonuses{background:var(--tint)}.bonuses .catalog li{grid-template-columns:96px minmax(0,1fr)}
-.value{font-size:15px;color:var(--muted)}.included{display:inline-block;white-space:nowrap;background:#f9e3bd;color:#5d2424;font-size:11px;font-weight:850;padding:3px 7px;border-radius:5px}
-.offer{background:var(--wine);border-color:#68353a;color:var(--cream)}
-.offer-grid{display:grid;gap:25px;align-items:start}
-.offer-content figure{border-radius:14px;overflow:hidden;background:#fff6ec}
-.offer-content img{width:100%}
-.offer-list li{display:flex;gap:8px;align-items:flex-start}
-.offer-list .icon{color:var(--gold);width:19px;height:19px;margin-top:3px}
-.offer-list del{white-space:nowrap;color:#f4d2c3}.offer-list .included{margin-left:3px}
-.offer-card{position:relative;min-width:0;background:var(--cream);border-radius:17px;padding:17px;color:var(--wine);box-shadow:0 19px 43px #16070899}
-.offer-ribbon{display:flex;align-items:center;min-height:48px;border-radius:8px;background:#f4e4d8;color:var(--deep);padding:8px 62px 8px 10px;font-size:12px;font-weight:850;letter-spacing:.04em}
-.discount{position:absolute;top:12px;right:12px;width:59px;height:59px;display:grid;place-items:center;border-radius:50%;background:var(--red);color:#fff;font-weight:850}
-.normal{font-size:18px;color:var(--muted)}.normal del{white-space:nowrap;text-decoration-color:var(--red);text-decoration-thickness:2px}
-.price{display:grid;gap:3px}.price strong{font-family:var(--display);font-size:64px;line-height:.98;letter-spacing:-.087em;color:var(--red);white-space:nowrap}
-.price-meta{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:15px}.price-meta strong{color:var(--red)}
-.offer-meters{display:grid;gap:8px;padding:12px;background:#f6e8dc;border:1px solid #e4c7ba;border-radius:10px}
-.offer-meters p{font-size:14px;line-height:1.3}.offer-meters .clock{display:block;font-size:clamp(30px,10vw,43px);line-height:1.05;color:var(--red);margin-top:3px}
-.offer-meters .timer-note{font-size:12px;color:var(--muted)}
-.offer-meters progress{width:100%;height:12px;appearance:none;border:0;border-radius:10px;background:#e5ccc2;overflow:hidden}
-.offer-meters progress::-webkit-progress-bar{background:#e5ccc2}.offer-meters progress::-webkit-progress-value{background:var(--red);border-radius:10px}.offer-meters progress::-moz-progress-bar{background:var(--red)}
-#slots-copy{font-weight:700}.offer-card .button{min-height:60px;background:var(--gold);color:var(--wine);animation:buy-pulse 2.5s ease-in-out infinite}
-.offer-card .button:hover{background:#f8c96e}.payment{display:flex;justify-content:center;align-items:center;gap:6px;font-size:14px;font-weight:700}.payment .icon{width:19px;height:19px}
-@keyframes buy-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
-.guarantee{text-align:center;background:var(--tint)}.guarantee .copy{margin-inline:auto}.guarantee-seal{display:block;width:142px;height:auto;margin-inline:auto}
-.faq{max-width:740px}.faq h2{margin-bottom:16px}.faq details{border-bottom:1px solid var(--line)}
-.faq summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px;font-weight:700;cursor:pointer;list-style:none}
-.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";flex:none;color:var(--red);font-size:24px;line-height:1}
-.faq details[open] summary::after{content:"−"}.faq details p{padding:0 18px 18px;color:var(--muted)}
-.final{text-align:center;background:var(--paper)}.final .button{max-width:415px;margin:24px auto 0}.final .micro{margin-top:10px}
-.legal{border-top:1px solid var(--line);padding:16px 0 24px;font-size:13px;color:var(--muted)}
-.legal nav{display:flex;gap:14px;margin-top:8px}
-.sticky{position:fixed;z-index:3;inset:auto 0 0;background:var(--cream);border-top:1px solid var(--line);padding:7px 12px calc(7px + env(safe-area-inset-bottom));display:none}
-.sticky.is-visible{display:block}.sticky .button{min-height:52px}
-@media(max-width:359px){.hero-media{width:165px}.wrap{width:calc(100% - 26px)}}
-@media(min-width:900px){
- :root{--top:60px}body{font-size:18px}.wrap{width:min(100% - 56px,1080px)}.section{padding-block:80px}h2{font-size:42px}
- .hero{padding-block:34px}.hero-grid{grid-template-columns:1fr 1fr;gap:20px 33px;text-align:left;align-items:center}
- .hero-copy{display:grid;gap:14px;grid-column:1;grid-row:1;align-self:end}
- h1{font-size:clamp(36px,4.3vw,58px)}.hero .copy{margin-inline:0}.hero-media{width:min(100%,520px);grid-column:2;grid-row:1 / span 2}
- .hero-buy{grid-column:1;grid-row:2;max-width:430px;align-self:start}
- .trust .wrap{max-width:800px;gap:18px}.trust span{font-size:15px;display:flex;justify-content:center;align-items:center}
- .testimonios{width:460px}.pain-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1fr);align-items:center;gap:17px 32px}
- .pain-grid h2{grid-column:2;align-self:end}.pain-grid .stack{align-self:start}
- .apoyo{grid-column:1;grid-row:1 / span 2}.catalog{grid-template-columns:repeat(2,minmax(0,1fr))}
- .catalog li{grid-template-columns:120px minmax(0,1fr);padding:16px;gap:15px}
- .catalog p{font-size:17px}.steps{grid-template-columns:repeat(3,minmax(0,1fr))}
- .step-media{display:block;max-width:680px}.bonuses .catalog{grid-template-columns:repeat(3,minmax(0,1fr))}
- .bonuses .catalog li{align-items:start;grid-template-columns:96px minmax(0,1fr)}
- .offer-grid{grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);align-items:center;gap:32px}
- .offer-card{padding:24px}.price strong{font-size:88px}
- .sticky.is-visible{display:none}body:has(.sticky.is-visible){padding-bottom:0}
+:root{--cream:#fff7ee;--paper:#fffdfa;--tint:#f4e7da;--ink:#301d21;--muted:#624e4e;--wine:#9b1c24;--deep:#2a1217;--gold:#ffd27a;--line:#e9d3c5;--bar:66px;--serif:Georgia,serif}
+*,*::before,*::after{box-sizing:border-box}body{margin:0;padding-top:var(--bar);background:var(--cream);font:17px/1.45 system-ui,sans-serif;color:var(--ink)}
+img{display:block;max-width:100%;height:auto}h1,h2,h3,p,figure,ul,ol{margin:0}ul,ol{padding:0;list-style:none}a{color:inherit}
+h1,h2{font-family:var(--serif);line-height:1.1;text-wrap:balance;letter-spacing:-.035em}h1{font-size:clamp(31px,6.3vw,56px)}h2{font-size:clamp(28px,5.5vw,44px);margin-bottom:15px}h3{font-size:18px;line-height:1.2}
+:focus-visible{outline:3px solid #c17831;outline-offset:4px}.wrap{width:min(calc(100% - 32px),1080px);margin-inline:auto}
+.section{padding-block:42px;border-top:1px solid var(--line)}.compact{padding-block:28px}.tint{background:var(--tint)}
+.icon{width:25px;height:25px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;color:var(--wine)}
+.button{display:flex;align-items:center;justify-content:center;min-height:54px;padding:10px 14px;border-radius:10px;background:var(--wine);color:white;font-weight:800;font-size:18px;text-align:center;text-decoration:none;line-height:1.2}
+.button:hover{filter:brightness(1.08)}.button.gold{background:var(--gold);color:var(--deep)}.pulse{animation:pulse 2.8s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.018)}}.micro{display:flex;align-items:center;justify-content:center;gap:5px;text-align:center;color:var(--muted);font-size:13px;margin-top:9px}.micro .icon{width:15px;height:15px}
+.offer-top{position:fixed;z-index:4;inset:0 0 auto;background:linear-gradient(100deg,#7a1620,#b3202c);color:white}.offer-top .wrap{width:100%;min-height:var(--bar);display:grid;justify-items:center;justify-content:center;gap:2px;padding:4px 0;font-size:15px;overflow:hidden}.launch,.offer-detail{display:flex;align-items:center;justify-content:center;gap:5px;white-space:nowrap}.launch{color:var(--gold)}.flame.icon{width:17px;height:17px;color:inherit;fill:currentColor;stroke:none}.offer-detail{letter-spacing:-.045em}.offer-detail del{text-decoration-thickness:1.5px}.clock{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:800}.clock-boxes{display:inline-flex;align-items:center;gap:2px;color:var(--gold);font-size:22px;line-height:1;letter-spacing:0}.clock-boxes b{display:grid;place-items:center;min-width:30px;padding:3px 2px;border-radius:5px;background:#541219}.clock-boxes i{font-style:normal}
+@media(max-width:389px){.offer-detail{transform:scaleX(.90)}}@media(max-width:339px){.offer-detail{transform:scaleX(.80)}}
+.hero{padding-bottom:28px;text-align:center}.hero-image{margin:auto;width:min(100%,770px);aspect-ratio:1;object-fit:contain}.hero-copy{display:grid;justify-items:center;gap:12px}.hero-copy h1{max-width:23ch}.hero-copy>p{color:var(--muted)}.hero-copy .button{width:min(100%,465px);margin-top:7px}
+.proof{background:var(--tint);border-block:1px solid var(--line);padding-block:14px;font-weight:800}.proof .wrap{display:flex;align-items:center;justify-content:center;gap:8px;text-align:center}
+.volumes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.volumes li{display:grid;align-content:start;justify-items:center;gap:5px;text-align:center;padding:10px 6px 12px;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 3px 11px #2a12170c}.volumes img{width:min(100%,115px)}.volumes h3{font-size:16px;overflow-wrap:anywhere}.volumes p{color:var(--muted);font-size:14px;line-height:1.25}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips li{display:flex;gap:6px;align-items:center;padding:6px 9px;background:var(--paper);border:1px solid var(--line);border-radius:9px;font-size:15px}.chips .icon{width:17px;height:17px}
+.rail{display:flex;gap:12px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;padding:4px 0 10px;scrollbar-width:thin;scrollbar-color:#bb7776 transparent}.rail figure{flex:0 0 auto;scroll-snap-align:start;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--paper)}.rail img{width:100%}.pages figure{width:clamp(180px,63vw,248px)}.messages figure{width:clamp(249px,83vw,340px)}.center-action{max-width:470px;margin:18px auto 0}.messages img{pointer-events:none}
+#bonos,#oferta{scroll-margin-top:calc(var(--bar) + 6px)}.cinema{background:radial-gradient(ellipse at 50% 25%,#734529 0,#482224 38%,#2a1217 83%);color:var(--cream);border-color:#65353b}.cinema h2{text-align:center;color:var(--gold)}
+.duo{display:grid;justify-items:center;gap:0;margin:-5px auto 10px;max-width:1000px}.duo img{max-width:min(100%,490px);width:100%;aspect-ratio:1;object-fit:contain}
+.bonus-cards{display:grid;gap:8px}.bonus-cards li{padding:14px;background:#2a1217aa;border:1px solid #d7a66b66;border-radius:11px}.bonus-cards li>div{display:grid;height:100%;grid-template-rows:auto 1fr auto}.bonus-cards .bonus-value{margin-top:9px}.bonus-cards p{color:#ffebd7;font-size:15px;margin-top:5px}.bonus-value del{color:#f6c6b8}.bonus-value strong,.offer-list .included{white-space:nowrap;margin-left:4px;color:#452116;background:var(--gold);border-radius:5px;padding:3px 7px;font-size:12px}
+.offer-grid{display:grid;gap:14px;max-width:950px;margin:0 auto}.offer-content{padding:15px;border:1px solid #d7a66b66;border-radius:12px;background:#2a1217aa}.offer-content h3{font:700 27px/1.1 var(--serif);margin-bottom:10px}.offer-list{display:grid;gap:7px}.offer-list li{display:flex;gap:6px;align-items:flex-start;font-size:15px}.offer-list .icon{width:17px;height:17px;color:var(--gold);margin-top:2px}.offer-list del{white-space:nowrap;color:#f6c6b8}
+.offer-card{display:grid;gap:11px;padding:16px;background:var(--cream);color:var(--deep);border-radius:12px;box-shadow:0 12px 24px #18091465}.offer-ribbon{padding:7px 10px;border-radius:6px;background:var(--tint);color:var(--wine);font-size:13px;font-weight:900;letter-spacing:.06em}.normal{display:flex;flex-wrap:wrap;gap:5px;font-size:17px;color:var(--muted)}.normal del{font-size:19px;text-decoration-color:var(--wine);text-decoration-thickness:2px}.current-price{display:flex;gap:7px;align-items:baseline;flex-wrap:wrap}.current-price strong{font:700 clamp(43px,12vw,68px)/1 var(--serif);letter-spacing:-.06em;color:var(--wine);white-space:nowrap}.saving{background:var(--gold);color:var(--deep);padding:4px 7px;border-radius:5px;font-weight:800;font-size:14px}.per-unit,.timer-note{font-size:13px;color:var(--muted)}
+.offer-meters{display:grid;gap:6px;padding:10px;background:var(--tint);border-radius:8px;font-size:14px}.offer-meters .clock{font-size:22px;color:var(--wine)}progress{width:100%;height:10px;accent-color:var(--wine)}[data-slots-copy]{font-weight:700}
+.offer-trust{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;text-align:center}.offer-trust li{display:grid;justify-items:center;align-content:start;gap:4px;padding:7px 3px;border:1px solid var(--line);border-radius:8px;background:var(--paper);font-size:14px;line-height:1.2}.offer-trust .icon{width:21px;height:21px}.offer-trust span{font-size:12px;color:var(--muted)}.payment{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted)}.payment-icons{display:flex;gap:3px;flex:none}.payment .icon{width:17px;height:17px}.offer-card .micro{margin-top:0}
+.steps{display:grid;gap:8px}.steps li{display:flex;align-items:center;gap:13px;padding:13px;border:1px solid var(--line);background:var(--paper);border-radius:11px}.steps .icon{width:32px;height:32px}
+.guarantee{text-align:center}.guarantee-seal{display:block;width:109px;margin:0 auto 12px}.guarantee p{margin:auto;max-width:53ch}.faq{max-width:760px}.faq details{border-bottom:1px solid var(--line)}.faq summary{cursor:pointer;padding:13px 1px;font-weight:750}.faq details p{color:var(--muted);padding-bottom:12px}
+.legal{border-top:1px solid var(--line);font-size:13px;color:var(--muted);padding:16px 0 23px}.legal nav{display:flex;gap:13px;margin-top:6px}
+.sticky{position:fixed;z-index:3;inset:auto 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px;align-items:center;padding:6px 11px calc(5px + env(safe-area-inset-bottom));background:var(--cream);border-top:1px solid var(--line)}.sticky[hidden]{display:none}.sticky strong{white-space:nowrap;color:var(--wine)}.sticky .button{min-height:48px;font-size:16px}.sticky .micro{margin-top:2px;font-size:10px}.sticky .micro .icon{display:none}
+@media(max-width:767px){body:has(.sticky:not([hidden])){padding-bottom:calc(78px + env(safe-area-inset-bottom))}}
+@media(min-width:768px){:root{--bar:60px}.offer-top .wrap{display:flex;gap:20px;font-size:17px;padding:0}.offer-detail{letter-spacing:0;gap:8px}.clock-boxes{font-size:26px}.clock-boxes b{min-width:36px}.section{padding-block:60px}.compact{padding-block:34px}.hero{padding-bottom:42px}.volumes{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.volumes img{width:145px}.duo{grid-template-columns:repeat(2,minmax(0,1fr))}.bonus-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.offer-grid{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);align-items:start}.offer-card{padding:20px}.steps{grid-template-columns:repeat(3,minmax(0,1fr))}.messages{justify-content:center}.messages figure{width:min(31vw,300px)}.sticky{display:none}}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}@media(prefers-reduced-motion:reduce){.pulse{animation:none}}
+
+@media(min-width:768px){
+  .hero{padding-top:0}
+  .hero-picture{display:block}
+  .hero-image{width:min(94vw,1500px);height:auto;max-height:88vh;object-fit:contain;margin:0 auto}
+  .hero-copy{padding-top:0}
 }
-@media(prefers-reduced-motion:reduce){
- .rotator-grid{gap:14px}.frame{grid-area:auto;opacity:1;transition:none}.dots{display:none}.offer-card .button{animation:none}
+@media(min-width:1024px){
+  .hero-image{aspect-ratio:2/1}
 }
 
-/* Fixed launch banner and checkout links */
-.offer-top{background:linear-gradient(100deg,#7a1620,#b3202c)}
-.offer-top .wrap{width:100%;display:grid;justify-items:center;justify-content:center;gap:2px;padding:4px 0;font-size:15px;overflow:hidden}
-.launch,.offer-detail{display:flex;align-items:center;justify-content:center;gap:5px;white-space:nowrap}
-.launch{color:var(--gold)}.launch .flame{width:17px;height:17px;color:inherit;fill:currentColor;stroke:none}
-.offer-detail{letter-spacing:-.045em}.offer-detail del{text-decoration-thickness:1.5px}
-.offer-top .clock-boxes{display:inline-flex;align-items:center;gap:2px;padding:0;background:transparent;color:var(--gold);font-size:22px;line-height:1;letter-spacing:0;animation:clock-pulse 2.5s ease-in-out infinite}
-.clock-boxes b{display:grid;place-items:center;min-width:30px;padding:3px 2px;border-radius:5px;background:#541219}
-.clock-boxes i{font-style:normal}
-@keyframes clock-pulse{50%{transform:scale(1.025);opacity:.88}}
-@media(max-width:389px){.offer-detail{transform:scaleX(.90)}}
-@media(max-width:339px){.offer-detail{transform:scaleX(.80)}}
-.button{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) 24px;column-gap:8px;min-height:60px;font-size:20px;font-weight:800}
-.button .arrow{width:23px;height:23px;color:currentColor}
-.button::before{content:"";position:absolute;inset:0 auto 0 0;width:32%;pointer-events:none;background:linear-gradient(110deg,transparent,#ffffff38,transparent);transform:translateX(-120%);animation:checkout-sheen 4s ease-in-out infinite;z-index:-1}
-@keyframes checkout-sheen{0%,56%{transform:translateX(-120%)}82%,100%{transform:translateX(430%)}}
-.hero-proof{display:flex;gap:5px;align-items:center;justify-content:center;font-size:13px;font-weight:750;color:var(--deep);text-align:center}
-.hero-proof .icon{width:18px;height:18px}
-.hero-media{width:min(100%,180px)}
-.reviews-buy{max-width:430px;margin:20px auto 0}
-.rotator-grid{position:relative;overflow:hidden}
-.frame.active{z-index:auto}
-.frame:not(.active){transition:none}
-.cuadernos .catalog{grid-auto-rows:1fr;align-items:stretch}
-.cuadernos .catalog li{align-self:stretch}
-.objections{background:var(--paper)}
-.objection-grid{display:grid;gap:12px}
-.objection-grid article{padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--cream);box-shadow:var(--shadow)}
-.objection-grid p{margin-top:5px;color:var(--muted)}
-.offer .normal{display:grid;justify-items:start;color:#6b5a5a;font-size:28px;line-height:1.12;font-weight:700}
-.offer .normal del{position:relative;display:inline-block;text-decoration:none;padding-block:3px}
-.offer .normal del::after{content:"";position:absolute;height:3px;inset:50% -3px auto;background:#c62828;transform:rotate(-10deg);border-radius:3px}
-.offer-now{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:7px 12px}
-.offer-now .price{display:contents}.offer-now .price>span{grid-area:1/1}.offer-now .price>strong{grid-area:2/1/3/3}
-.price-badges{grid-area:1/2;display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:6px}
-.offer-now .discount{position:static;width:auto;height:auto;min-height:27px;display:inline-flex;align-items:center;padding:2px 8px;border-radius:7px;font-size:14px}
-.savings{border-radius:20px;padding:4px 9px;background:var(--gold);color:var(--wine);font-size:14px;white-space:nowrap}
-.per-unit{font-size:14px;color:#6b5a5a;line-height:1.3}
-.offer-trust{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
-.offer-trust li{display:grid;align-content:start;justify-items:center;gap:5px;text-align:center;padding:9px 4px;border:1px solid #e3c7b8;border-radius:9px;color:var(--wine);background:var(--paper);line-height:1.16;overflow-wrap:anywhere}
-.offer-trust .icon{width:28px;height:28px}
-.offer-trust strong{font-size:16px}.offer-trust span{font-size:14px}
-.guarantee .copy{font-size:18px}
-.final-timer .clock{display:inline-block;font-size:25px;color:var(--deep);background:var(--tint);border-radius:7px;padding:5px 12px}
-.sticky.is-visible{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center}
-.sticky .button{min-height:60px}.mobile-price{font-size:20px;color:var(--deep);white-space:nowrap}
-@media(min-width:900px){
- .offer-top .wrap{display:flex;gap:20px;font-size:17px;padding:0}
- .offer-detail{letter-spacing:0;gap:8px}
- .offer-top .clock-boxes{font-size:26px}.clock-boxes b{min-width:36px}
- .button{font-size:22px;min-height:64px}
- .hero-media{width:min(100%,520px)}
- .step-media{display:block;margin-inline:auto;max-width:none;width:min(100%,760px)}
- .steps{margin-inline:auto;width:min(100%,760px);grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
- .objection-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
- .offer-grid{grid-template-columns:minmax(0,1fr) minmax(460px,1.08fr)}.offer-card{container-type:inline-size}
- .offer-trust{grid-template-columns:repeat(4,minmax(0,1fr))}
- .sticky.is-visible{display:none}
-}
-@media(prefers-reduced-motion:reduce){
- .button::before,.offer-top .clock-boxes{animation:none}
-}
-@container(min-width:475px){
- .offer-now .price>strong{grid-area:2/1}.price-badges{grid-area:2/2;flex-direction:column;align-items:flex-end;gap:5px}
-}
-@media print{
- .rotator-grid{break-inside:avoid}
- .frame{display:none}
- .frame.active{display:block}
-}
+.hero .hero-copy:first-child{padding:clamp(16px,3vw,32px) 0 0}.hero .hero-action{margin-top:4px}
+.audience-list{display:grid;gap:10px}.audience-list li{display:flex;gap:10px;align-items:flex-start;padding:14px 12px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+.audience-list p,.sample-note{color:var(--muted);margin-top:5px}.sample-note{margin-bottom:12px}
+.receive-lede{color:var(--muted);margin-bottom:14px}.includes-heading{margin:21px 0 9px}
+.reviews .proof{margin:0 0 13px;border:0;padding-block:4px}.reviews .proof .wrap{width:100%;justify-content:flex-start;text-align:left}
+.bonus-spot img{width:100%;height:auto;margin:0 auto 12px}
+@media(max-width:767px){.bonus-spot{margin-inline:-12px}}
+.packages{max-width:640px;margin-inline:auto}
+.package-complete{border:1px solid #d7a66b66;border-radius:14px;padding:14px;background:#2a1217aa}
+.package-name{font:700 28px/1.12 var(--serif);color:var(--gold);margin-bottom:12px}
+.package-complete .offer-grid{grid-template-columns:minmax(0,1fr);max-width:none}
+@media(min-width:768px){.audience-list{grid-template-columns:repeat(3,minmax(0,1fr))}.package-complete{padding:19px}}
 
-.payment{font-size:15px;align-items:flex-start;line-height:1.35}
-.payment-icons{display:flex;gap:3px;flex:none;margin-top:1px}
-.pain-intro{font-weight:750;color:var(--deep)}
-.includes-card{list-style:none;padding:16px;margin:15px 0 0;border:1px solid var(--line);border-radius:13px;background:var(--paper);box-shadow:var(--shadow);display:grid;gap:8px}
-.includes-card li{display:flex;align-items:flex-start;gap:8px}
-.includes-card .icon{width:20px;height:20px;margin-top:2px}
-.notebook-includes{background:var(--cream);padding-block:28px}
-.family-note{background:var(--cream);padding-block:26px}
-.total-value{font-size:15px;line-height:1.4;color:var(--wine)}
-.total-value del{color:var(--muted)}
-@media(min-width:900px){.notebook-includes .button{max-width:430px}}
+.messages figcaption{padding:5px 10px;font-size:13px;color:var(--muted);background:var(--paper)}
+
+/* Full-width slides in the activity and conversation carousels. */
+.single-slide-rail{width:100%;margin-inline:auto;gap:0;padding:0;scrollbar-width:none}
+.single-slide-rail::-webkit-scrollbar{display:none}
+.single-slide-rail.pages{max-width:430px}
+.single-slide-rail.messages{max-width:420px}
+.single-slide-rail figure{flex:0 0 100%;width:100%;scroll-snap-align:start;scroll-snap-stop:always}
+.single-slide-rail img{object-fit:contain}
+.volumes{grid-template-columns:repeat(3,minmax(0,1fr))}
+.single-slide-rail.is-playing{display:grid;grid-template-columns:minmax(0,1fr);overflow:hidden;touch-action:pan-y;user-select:none}
+.single-slide-rail.is-playing figure{grid-area:1/1;align-self:start;visibility:hidden;pointer-events:none}
+.single-slide-rail.is-playing figure.is-current{visibility:visible}
+@media(max-width:767px){.volumes{gap:6px}.volumes li{padding-inline:4px}.volumes h3{font-size:clamp(12px,3.7vw,16px)}.volumes p{font-size:clamp(11px,3.3vw,14px)}}
+.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:12px}
+.carousel-dots span{width:8px;height:8px;border-radius:50%;background:#b99991}
+.carousel-dots .active{background:var(--wine)}
 </style>
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute"><symbol id="i-check" viewBox="0 0 24 24"><path d="M4 13l5 5L20 7"/></symbol><symbol id="i-paper" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 12h7m-7 4h7"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><path d="M21 21l-5-5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5 5 0 0 0-7.1 0L12 6.3l-1.7-1.7a5 5 0 0 0-7.1 7.1l1.7 1.7 7.1 7.1 7.1-7.1 1.7-1.7a5 5 0 0 0 0-7.1Z"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 5h18v14H3zm0 1 9 7 9-7"/></symbol><symbol id="i-printer" viewBox="0 0 24 24"><path d="M6 8V3h12v5M6 17H3V9h18v8h-3M6 14h12v7H6z"/></symbol><symbol id="i-gift" viewBox="0 0 24 24"><path d="M3 8h18v4H3zm2 4h14v9H5zm7-4v13m0-13H8c-3 0-3-5 0-5 2 0 4 5 4 5Zm0 0h4c3 0 3-5 0-5-2 0-4 5-4 5Z"/></symbol><symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18m-14 5h4"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s7-3 7-10V5l-7-3-7 3v7c0 7 7 10 7 10Z"/><path d="m9 12 2 2 4-4"/></symbol></svg>
 <div class="offer-top"><div class="wrap"><p class="launch"><svg class="icon flame" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2c1 5-2 6-2 9-1-1-2-2-2-4-3 3-5 6-5 9a8 8 0 0 0 16 0c0-3-2-7-4-9 0 3-1 4-2 5 1-4 0-7-1-10Z"/></svg><strong>OFERTA DE LANZAMIENTO · 67% OFF</strong></p><p class="offer-detail"><span>Hoy <strong>US$ 5,90</strong> (antes <del>US$ 17,90</del>) · Termina en</span><span class="clock clock-boxes" data-clock data-boxed aria-live="off" aria-label="Temporizador de esta visita"><b>28</b><i>:</i><b>00</b></span></p></div></div>
 <main>
-<section class="hero" aria-labelledby="hero-title"><div class="wrap hero-grid">
-<div class="hero-copy"><p class="eyebrow">PSICOVIDA · 6 CUADERNOS PARA IMPRIMIR</p><h1 id="hero-title">Actividades listas para ejercitar la memoria de tu mamá o papá</h1><p class="copy">240 ejercicios con letra grande, instrucciones claras y soluciones. Los descargas hoy y empiezas esta misma tarde.</p></div>
-<figure class="hero-media"><img src="assets/hero-mockup.webp" width="900" height="900" fetchpriority="high" alt="Los seis cuadernos imprimibles de PsicoVida"></figure>
-<div class="hero-buy"><a class="button js-checkout" href="https://pay.hotmart.com/Q108457565F?checkoutMode=10"><span>Quiero la colección por US$ 5,90</span><svg class="icon arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a><p class="micro">Pago único · Descarga inmediata · Garantía de 7 días</p><p class="hero-proof"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> Más de 350 personas ya lo aprobaron</p></div>
-</div></section>
-<div class="trust"><div class="wrap"><span><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg> Compra segura · Hotmart</span><span><svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg> Descarga inmediata</span><span><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg> Garantía de 7 días</span></div><!-- FALTA: {{MÉTODOS_DE_PAGO_REALES}} --></div>
-<section class="section reviews" aria-labelledby="reviews-title"><div class="wrap stack">
-<h2 id="reviews-title">Más de 350 personas ya lo aprobaron</h2>
-<div class="rotator testimonios" data-rotator="testimonios" aria-label="Mensajes de clientes"><div class="rotator-grid"><figure class="frame active"><img src="assets/testimonio-completo-2.webp" width="744" height="1323" loading="lazy" decoding="async" alt="Conversación sobre la impresión del cuaderno de Memoria"></figure><figure class="frame"><img src="assets/testimonio-completo-3.webp" width="744" height="1323" loading="lazy" decoding="async" alt="Conversación sobre una actividad de atención, con una foto recreada"><figcaption class="photo-note">Foto de uso recreada.</figcaption></figure><figure class="frame"><img src="assets/testimonio-completo-4.webp" width="744" height="1323" loading="lazy" decoding="async" alt="Conversación sobre el acceso y la preparación de actividades"></figure><figure class="frame"><img src="assets/testimonio-completo-5.webp" width="744" height="1323" loading="lazy" decoding="async" alt="Conversación con una foto del cuaderno de Atención impreso"></figure><figure class="frame"><img src="assets/testimonio-completo-1.webp" width="744" height="1323" loading="lazy" decoding="async" alt="Conversación con una cuidadora sobre las actividades en tableta"></figure></div><div class="dots" aria-hidden="true"><span class="active"></span><span></span><span></span><span></span><span></span></div></div><p class="caption reviews-caption">Mensajes reales de clientes de PsicoVida</p><a class="button js-checkout reviews-buy" href="https://pay.hotmart.com/Q108457565F?checkoutMode=10"><span>Quiero la colección por US$ 5,90</span><svg class="icon arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
-</div></section>
-<section class="section pain-section"><div class="wrap pain-grid"><h2>¿Tienes a un adulto mayor que amas y quieres ayudarlo?</h2><figure class="apoyo"><img src="assets/apoyo-familiar.webp" width="800" height="1000" loading="lazy" decoding="async" alt="Una hija y su mamá haciendo una actividad juntas"></figure><div class="stack"><p class="pain-intro">Esto te va a sonar familiar</p><ul class="pain"><li><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span>Quieres ayudarle a mantenerse activo, pero no sabes por dónde empezar.</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-paper"></use></svg><span>Buscas actividades y encuentras fotocopias borrosas o diseños que parecen para niños.</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg><span>Pierdes tiempo y energía buscando material en el que puedas confiar.</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Sientes que pasa demasiado tiempo sin actividades que lo estimulen.</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><span>Quieres un momento para compartir, no una tarea más.</span></li></ul><p class="copy">Elige una actividad para tu mamá o papá según lo que le gusta y acompáñale a un ritmo cómodo.</p></div></div></section>
-<section class="section cuadernos"><div class="wrap stack"><h2>Seis cuadernos para elegir</h2><p class="copy">40 ejercicios por cuaderno, con instrucciones claras y dificultad progresiva.</p><ul class="catalog"><li><img src="assets/miniatura-1-v1.webp" width="156" height="220" loading="lazy" decoding="async" alt=""><div><h3>Atención y concentración</h3><p>Busca, identifica y compara detalles.</p></div></li>
-<li><img src="assets/miniatura-2-v1.webp" width="156" height="220" loading="lazy" decoding="async" alt=""><div><h3>Memoria</h3><p>Practica recuerdos y estrategias cotidianas.</p></div></li>
-<li><img src="assets/miniatura-3-v1.webp" width="156" height="220" loading="lazy" decoding="async" alt=""><div><h3>Lenguaje y comunicación</h3><p>Encuentra palabras y comparte ideas.</p></div></li>
-<li><img src="assets/miniatura-4-v1.webp" width="156" height="220" loading="lazy" decoding="async" alt=""><div><h3>Cálculo y números cotidianos</h3><p>Usa números en situaciones de cada día.</p></div></li>
-<li><img src="assets/miniatura-5-v1.webp" width="156" height="220" loading="lazy" decoding="async" alt=""><div><h3>Habilidades visuoespaciales y perceptivas</h3><p>Reconoce formas, posiciones y patrones.</p></div></li>
-<li><img src="assets/miniatura-6-v1.webp" width="156" height="220" loading="lazy" decoding="async" alt=""><div><h3>Cognición social y situaciones cotidianas</h3><p>Explora emociones y situaciones sociales.</p></div></li></ul><a class="button js-checkout" href="https://pay.hotmart.com/Q108457565F?checkoutMode=10"><span>Quiero la colección por US$ 5,90</span><svg class="icon arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a></div></section>
-<section class="section notebook-includes"><div class="wrap stack"><h2>Cada cuaderno incluye</h2><ul class="includes-card"><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>40 ejercicios por cuaderno</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Instrucciones claras en cada hoja</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Letra grande y buen contraste</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Soluciones y respuestas orientativas</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>PDF A4 listo para imprimir</span></li></ul><a class="button js-checkout" href="https://pay.hotmart.com/Q108457565F?checkoutMode=10"><span>Quiero la colección por US$ 5,90</span><svg class="icon arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a></div></section>
-<section class="section samples"><div class="wrap stack"><h2>Mira lo que vas a imprimir</h2><div class="rotator paginas" data-rotator="paginas" aria-label="Seis páginas de muestra"><div class="rotator-grid"><figure class="frame active"><img src="assets/actividad-muestra-1-v1.webp" width="480" height="678" loading="lazy" decoding="async" alt="Página de muestra de Atención y concentración"></figure><figure class="frame"><img src="assets/actividad-muestra-2-v1.webp" width="480" height="678" loading="lazy" decoding="async" alt="Página de muestra de Memoria"></figure><figure class="frame"><img src="assets/actividad-muestra-3-v1.webp" width="480" height="678" loading="lazy" decoding="async" alt="Página de muestra de Lenguaje y comunicación"></figure><figure class="frame"><img src="assets/actividad-muestra-4-v1.webp" width="480" height="678" loading="lazy" decoding="async" alt="Página de muestra de Cálculo y números cotidianos"></figure><figure class="frame"><img src="assets/actividad-muestra-5-v1.webp" width="480" height="678" loading="lazy" decoding="async" alt="Página de muestra de Habilidades visuoespaciales y perceptivas"></figure><figure class="frame"><img src="assets/actividad-muestra-6-v1.webp" width="480" height="678" loading="lazy" decoding="async" alt="Página de muestra de Cognición social y situaciones cotidianas"></figure></div><div class="dots" aria-hidden="true"><span class="active"></span><span></span><span></span><span></span><span></span><span></span></div></div></div></section>
-<section class="section steps-section"><div class="wrap stack"><h2>Empieza en tres pasos</h2><figure class="step-media"><img src="assets/hojas-impresas.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Páginas impresas de los cuadernos de PsicoVida"></figure><ol class="steps"><li><div class="step-mark"><span aria-hidden="true">1</span><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg></div><p>Abre el acceso que recibes por correo.</p></li><li><div class="step-mark"><span aria-hidden="true">2</span><svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg></div><p>Descarga el PDF y elige una actividad.</p></li><li><div class="step-mark"><span aria-hidden="true">3</span><svg class="icon" aria-hidden="true"><use href="#i-printer"></use></svg></div><p>Imprime la hoja o úsala en pantalla.</p></li></ol><p class="copy">Puedes responder en voz alta, señalando o anotando en una hoja aparte.</p></div></section>
-<section class="section bonuses"><div class="wrap stack"><h2>Tres bonos incluidos</h2><ul class="catalog"><li><img src="assets/miniatura-7-v1.webp" width="156" height="220" loading="lazy" decoding="async" alt=""><div><p class="eyebrow">BONO 1</p><h3>Juegos en familia</h3><p>20 juegos para compartir entre 2 y 8 personas.</p><p class="value"><del>US$ 11,90</del> · <span class="included">GRATIS HOY</span></p></div></li>
-<li><img src="assets/miniatura-8-v1.webp" width="156" height="220" loading="lazy" decoding="async" alt=""><div><p class="eyebrow">BONO 2</p><h3>Hábitos saludables en la vida diaria</h3><p>Ideas para organizar rutinas de bienestar.</p><p class="value"><del>US$ 11,90</del> · <span class="included">GRATIS HOY</span></p></div></li>
-<li><img src="assets/miniatura-9-v1.webp" width="156" height="220" loading="lazy" decoding="async" alt=""><div><p class="eyebrow">BONO 3</p><h3>Cuidar con respeto</h3><p>Guía para familiares, cuidadores y profesionales.</p><p class="value"><del>US$ 11,90</del> · <span class="included">GRATIS HOY</span></p></div></li></ul><p class="value"><del>Valor de los bonos: US$ 35,70</del></p></div></section>
-<section class="section family-note"><div class="wrap stack"><h2>Hecho para compartir en familia</h2><p class="copy">PsicoVida reúne actividades listas, claras y respetuosas para que las familias compartan momentos con sus mayores, sin perder horas buscando material.</p></div></section>
-<section class="section objections"><div class="wrap stack"><h2>Antes de decidir</h2><div class="objection-grid"><article><h3>¿Qué pasa si no le gusta?</h3><p>Tienes 7 días de garantía: solicitas el reembolso en Hotmart.</p></article><article><h3>No tengo impresora en casa. ¿Es difícil pasarlo a papel?</h3><p>No necesitas impresora en casa: puedes llevar el PDF a una papelería o usarlo en pantalla.</p></article><article><h3>¿El pago es único?</h3><p>Sí, un solo pago, sin suscripciones.</p></article></div></div></section>
-<section class="section offer" aria-labelledby="offer-title"><div class="wrap offer-grid">
-<div class="offer-content stack"><h2 id="offer-title">Tu colección completa PsicoVida</h2><figure><img src="assets/pack-completo.webp" width="1200" height="675" loading="lazy" decoding="async" alt="Los seis cuadernos y los tres bonos imprimibles de PsicoVida"></figure>
-<ul class="offer-list"><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><svg class="icon" aria-hidden="true"><use href="#i-paper"></use></svg><span>6 cuadernos · 240 ejercicios con letra grande y soluciones</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><svg class="icon" aria-hidden="true"><use href="#i-printer"></use></svg><span>476 páginas A4 listas para imprimir</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><svg class="icon" aria-hidden="true"><use href="#i-gift"></use></svg><span>Bono 1: Juegos en familia <del>US$ 11,90</del> <span class="included">GRATIS HOY</span></span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><svg class="icon" aria-hidden="true"><use href="#i-gift"></use></svg><span>Bono 2: Hábitos saludables en la vida diaria <del>US$ 11,90</del> <span class="included">GRATIS HOY</span></span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><svg class="icon" aria-hidden="true"><use href="#i-gift"></use></svg><span>Bono 3: Cuidar con respeto <del>US$ 11,90</del> <span class="included">GRATIS HOY</span></span></li></ul></div>
-<div class="offer-card stack"><div class="offer-ribbon">OFERTA DE LANZAMIENTO</div><template id="valor-total-template"><div class="total-value"><p><del>Valor total: cuadernos US$ 17,90 + bonos US$ 35,70 = US$ 53,60</del></p><p><strong>Hoy US$ 5,90 · ahorras US$ 47,70</strong></p></div></template><div class="normal"><span>Precio normal</span><del>US$ 17,90</del></div><div class="offer-now"><p class="price"><span>Hoy</span><strong>US$ 5,90</strong></p><div class="price-badges"><span class="discount" aria-label="67 por ciento de descuento">−67%</span><strong class="savings">Ahorras US$ 12,00</strong></div></div><p class="per-unit">Menos de US$ 1 por cuaderno · menos de US$ 0,03 por ejercicio</p>
-<div class="offer-meters"><p>La oferta termina en <strong class="clock" data-clock aria-live="off">28:00</strong></p><p class="timer-note">El precio y el acceso siguen disponibles cuando el contador llega a cero.</p><progress id="slots-progress" max="100" value="74" aria-label="Cupos de lanzamiento ocupados"></progress><p id="slots-copy">74% de los cupos de lanzamiento ya fueron tomados · Quedan pocos</p></div>
-<ul class="offer-trust" aria-label="Información de compra"><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><strong>Pago único</strong><span>sin suscripciones</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg><strong>Acceso inmediato</strong><span>por correo</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg><strong>Garantía de 7 días</strong><span>reembolso por Hotmart</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg><strong>Compra segura</strong><span>pago procesado por Hotmart</span></li></ul><a class="button js-checkout" href="https://pay.hotmart.com/Q108457565F?checkoutMode=10"><span>Sí, quiero acceso inmediato</span><svg class="icon arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a><p class="payment"><span class="payment-icons"><svg class="icon" aria-hidden="true"><use href="#i-card"></use></svg><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg></span><span>Paga con tarjeta u otros métodos disponibles en tu país · Procesado de forma segura por Hotmart</span></p><p class="micro">Pago único · Acceso inmediato por correo · Garantía de 7 días</p><!-- FALTA: {{MÉTODOS_DE_PAGO_REALES}} --></div></div></section>
-<section class="section guarantee"><div class="wrap stack"><svg class="guarantee-seal" viewBox="0 0 150 150" role="img" aria-label="7 días"><circle cx="75" cy="75" r="70" fill="#fff8ef" stroke="#9e2229" stroke-width="2"/><circle cx="75" cy="75" r="62" fill="none" stroke="#b98462" stroke-width="1" stroke-dasharray="2 3"/><text x="75" y="86" text-anchor="middle" font-size="62" font-family="Georgia" font-weight="700" fill="#9e2229">7</text><text x="75" y="113" text-anchor="middle" font-size="18" font-weight="800" fill="#9e2229">DÍAS</text></svg><h2>Garantía de 7 días, sin riesgo</h2><p class="copy">Pruébala. Si no es para ti, solicita el reembolso en Hotmart dentro de los 7 días posteriores a tu compra.</p></div></section>
-<section class="section"><div class="wrap faq"><h2>Preguntas frecuentes</h2>
-<details><summary>A mi mamá o papá no se le dan bien las tecnologías. ¿Tengo que estar a su lado todo el tiempo?</summary><p>Una vez impresa, la hoja se usa como cualquier hoja de papel. Puedes acompañarlo o dejar que la haga a su ritmo.</p></details>
-<details><summary>Me da miedo que el diseño parezca para niños. ¿Cómo está hecho?</summary><p>Letra grande, buen contraste e imágenes de la vida cotidiana, con un diseño pensado para adultos.</p></details>
-<details><summary>¿Para quién es?</summary><p>El material está pensado para personas mayores y quienes las acompañan en casa o en su trabajo.</p></details>
+  <header class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-copy">
+      <h1 id="hero-title">Ejercita la memoria con mamá o papá</h1>
+      <p>240 ejercicios con letra grande, listos para imprimir.</p>
+    </div>
+    <picture class="hero-picture">
+      <source media="(min-width: 1024px)" srcset="img/hero-mockup-desktop.webp" width="2400" height="1200">
+      <img class="hero-image" src="img/hero-mockup.webp" srcset="img/hero-mockup-800.webp 800w, img/hero-mockup.webp 1600w" sizes="(min-width: 768px) 94vw, 100vw" width="1600" height="1600" fetchpriority="high" decoding="async" alt="Seis cuadernos y tres bonos de PsicoVida. Compra segura, acceso inmediato y garantía de 7 días.">
+    </picture>
+    <div class="wrap hero-copy hero-action">
+      <a class="button pulse" href="#bonos">🎁 Quiero garantizar mi bono</a>
+    </div>
+  </header>
+  <section class="section tint" id="para-quien" aria-labelledby="audience-title">
+  <div class="wrap">
+    <h2 id="audience-title">¿Para quién es PsicoVida?</h2>
+    <ul class="audience-list">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg><div><h3>Personas mayores</h3><p>Actividades con letra grande e instrucciones claras.</p></div></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-paper"></use></svg><div><h3>Familiares</h3><p>Una forma de compartir tiempo con mamá, papá o tus abuelos.</p></div></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><div><h3>Cuidadores y profesionales</h3><p>Ejercicios listos para acompañar a personas mayores.</p></div></li>
+    </ul>
+  </div>
+</section>
+  <section class="section samples"><div class="wrap">
+    <h2>Mira lo que vas a imprimir</h2><p class="sample-note">Páginas reales de los cuadernos. Desliza para verlas.</p>
+    <div class="rail pages auto-rail single-slide-rail" tabindex="0" role="region" aria-label="Páginas de ejemplo. Desliza para ver las seis.">
+     <figure><img src="assets/actividad-muestra-1-v1.webp" width="480" height="678" loading="lazy" decoding="async" alt="Ejercicio de Atención y concentración"></figure><figure><img src="assets/actividad-muestra-2-v1.webp" width="480" height="678" loading="lazy" decoding="async" alt="Ejercicio de Memoria"></figure><figure><img src="assets/actividad-muestra-3-v1.webp" width="480" height="678" loading="lazy" decoding="async" alt="Ejercicio de Lenguaje y comunicación"></figure><figure><img src="assets/actividad-muestra-4-v1.webp" width="480" height="678" loading="lazy" decoding="async" alt="Ejercicio de Cálculo y números cotidianos"></figure><figure><img src="assets/actividad-muestra-5-v1.webp" width="480" height="678" loading="lazy" decoding="async" alt="Ejercicio de Habilidades visuoespaciales y perceptivas"></figure><figure><img src="assets/actividad-muestra-6-v1.webp" width="480" height="678" loading="lazy" decoding="async" alt="Ejercicio de Cognición social y situaciones cotidianas"></figure>
+    </div>
+  </div></section>
+  <section class="section" id="cuadernos"><div class="wrap">
+    <h2>Qué recibes</h2><p class="receive-lede">6 cuadernos · 240 ejercicios · 476 páginas A4</p>
+    <ul class="volumes" aria-label="Seis cuadernos"><li><img src="img/vol-1.webp" width="230" height="292" loading="lazy" decoding="async" alt=""><h3>Atención y concentración</h3><p>Encuentra y compara detalles.</p></li><li><img src="img/vol-2.webp" width="230" height="292" loading="lazy" decoding="async" alt=""><h3>Memoria</h3><p>Practica estrategias para recordar.</p></li><li><img src="img/vol-3.webp" width="230" height="292" loading="lazy" decoding="async" alt=""><h3>Lenguaje y comunicación</h3><p>Comparte palabras e ideas.</p></li><li><img src="img/vol-4.webp" width="230" height="292" loading="lazy" decoding="async" alt=""><h3>Cálculo y números cotidianos</h3><p>Resuelve situaciones del día.</p></li><li><img src="img/vol-5.webp" width="230" height="292" loading="lazy" decoding="async" alt=""><h3>Habilidades visuoespaciales y perceptivas</h3><p>Reconoce formas y posiciones.</p></li><li><img src="img/vol-6.webp" width="230" height="292" loading="lazy" decoding="async" alt=""><h3>Cognición social y situaciones cotidianas</h3><p>Explora emociones y situaciones.</p></li></ul>
+  <h3 class="includes-heading">Cada cuaderno incluye</h3><ul class="chips"><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>40 ejercicios</li><li><svg class="icon" aria-hidden="true"><use href="#i-paper"></use></svg>Letra grande</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Instrucciones claras</li><li><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>Soluciones</li><li><svg class="icon" aria-hidden="true"><use href="#i-printer"></use></svg>PDF A4</li></ul></div></section>
+  <section class="section reviews tint" aria-labelledby="reviews-title"><div class="wrap">
+    <h2 id="reviews-title">Testimonios de clientes</h2><div class="proof"><div class="wrap"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> Más de 350 personas ya lo aprobaron</div></div>
+    <div class="rail messages auto-rail single-slide-rail" tabindex="0" role="region" aria-label="Conversaciones de WhatsApp. Desliza para ver las seis.">
+    <figure><img src="img/captura-psicovida-1-v2.webp" width="720" height="1280" loading="lazy" decoding="async" draggable="false" alt="Conversación sobre el cuaderno de Atención impreso"></figure>
+    <figure><img src="img/captura-psicovida-2-v2.webp" width="720" height="1280" loading="lazy" decoding="async" draggable="false" alt="Conversación sobre actividades de PsicoVida en una tableta"></figure>
+    <figure><img src="img/captura-psicovida-3-v2.webp" width="720" height="1280" loading="lazy" decoding="async" draggable="false" alt="Conversación sobre la impresión del cuaderno de Memoria"></figure>
+    <figure><img src="img/captura-psicovida-4-v2.webp" width="720" height="1280" loading="lazy" decoding="async" draggable="false" alt="Conversación sobre una actividad de Atención con una foto recreada"><figcaption>Foto de uso recreada.</figcaption></figure>
+    <figure><img src="img/captura-psicovida-5-v3.webp" width="720" height="1280" loading="lazy" decoding="async" draggable="false" alt="Conversación sobre el acceso y la preparación de las actividades"></figure>
+    <figure><img src="img/captura-psicovida-6-v2.webp" width="720" height="1280" loading="lazy" decoding="async" draggable="false" alt="Conversación sobre el cuaderno de Cognición social"></figure>
+    </div>
+    <div class="center-action"><a class="button js-checkout" data-checkout href="https://pay.hotmart.com/Q108457565F?checkoutMode=10">Quiero mi colección con bonos por US$ 5,90 →</a><p class="micro"><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg> Pago seguro por Hotmart · Garantía de 7 días</p></div>
+  </div></section>
+  <section class="section cinema" id="bonos" aria-labelledby="bonus-title"><div class="wrap">
+    <h2 id="bonus-title">Bonos especiales</h2>
+    <div class="bonus-spot"><img src="img/bonos-amplio-sin-sellos.webp" width="1600" height="740" loading="lazy" decoding="async" alt="Juegos en familia, Hábitos saludables en la vida diaria y Cuidar con respeto"></div>
+    <ul class="bonus-cards"><li><div><h3>Juegos en familia</h3><p>20 juegos en familia.</p><p class="bonus-value"><del>US$ 11,90</del> <strong>GRATIS HOY</strong></p></div></li><li><div><h3>Hábitos saludables en la vida diaria</h3><p>Hábitos para cada día.</p><p class="bonus-value"><del>US$ 11,90</del> <strong>GRATIS HOY</strong></p></div></li><li><div><h3>Cuidar con respeto</h3><p>Guía para quienes cuidan.</p><p class="bonus-value"><del>US$ 11,90</del> <strong>GRATIS HOY</strong></p></div></li></ul>
+
+  </div></section>
+  <section class="section cinema" id="oferta"><div class="wrap">
+    <h2>Accede hoy a PsicoVida</h2><div class="packages"><article class="package-complete"><h3 class="package-name">Paquete completo</h3>
+    <div class="offer-grid">
+  <div class="offer-content"><h3>Tu colección completa PsicoVida</h3><ul class="offer-list"><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><svg class="icon" aria-hidden="true"><use href="#i-paper"></use></svg><span>6 cuadernos · 240 ejercicios con letra grande y soluciones</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><svg class="icon" aria-hidden="true"><use href="#i-printer"></use></svg><span>476 páginas A4 listas para imprimir</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><svg class="icon" aria-hidden="true"><use href="#i-gift"></use></svg><span>Bono 1: Juegos en familia <del>US$ 11,90</del> <span class="included">GRATIS HOY</span></span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><svg class="icon" aria-hidden="true"><use href="#i-gift"></use></svg><span>Bono 2: Hábitos saludables en la vida diaria <del>US$ 11,90</del> <span class="included">GRATIS HOY</span></span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><svg class="icon" aria-hidden="true"><use href="#i-gift"></use></svg><span>Bono 3: Cuidar con respeto <del>US$ 11,90</del> <span class="included">GRATIS HOY</span></span></li></ul></div>
+  <div class="offer-card">
+   <p class="offer-ribbon">OFERTA DE LANZAMIENTO</p>
+   <div class="normal"><span>Precio normal</span><del>US$ 17,90</del></div>
+   <div class="current-price"><strong>US$ 5,90</strong><span class="saving">−67% · Ahorras US$ 12,00</span></div>
+   <p class="per-unit">Menos de US$ 1 por cuaderno · menos de US$ 0,03 por ejercicio</p>
+   <div class="offer-meters"><p>La oferta termina en <strong class="clock" data-clock aria-live="off">28:00</strong></p><p class="timer-note">El precio y el acceso siguen disponibles cuando el contador llega a cero.</p><progress data-slots-progress max="100" value="74" aria-label="Cupos de lanzamiento ocupados"></progress><p data-slots-copy>74% de los cupos de lanzamiento ya fueron tomados · Quedan pocos</p></div>
+   <ul class="offer-trust" aria-label="Información de compra"><li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><strong>Pago único</strong><span>sin suscripciones</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg><strong>Acceso inmediato</strong><span>por correo</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg><strong>Garantía de 7 días</strong><span>reembolso por Hotmart</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg><strong>Compra segura</strong><span>pago procesado por Hotmart</span></li></ul>
+   <a class="button gold pulse js-checkout" data-checkout href="https://pay.hotmart.com/Q108457565F?checkoutMode=10">Quiero mi acceso inmediato por US$ 5,90 →</a>
+   <p class="micro">Pago único · Acceso inmediato · Garantía de 7 días</p>
+   <p class="payment"><span class="payment-icons"><svg class="icon" aria-hidden="true"><use href="#i-card"></use></svg><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg></span><span>Paga con tarjeta u otros métodos disponibles en tu país · Procesado de forma segura por Hotmart</span></p>
+   <!-- FALTA: {{MÉTODOS_DE_PAGO_REALES}} -->
+  </div>
+ </div>
+  </article></div></div></section>
+  <section class="section guarantee tint"><div class="wrap">
+    <svg class="guarantee-seal" viewBox="0 0 150 150" role="img" aria-label="7 días"><circle cx="75" cy="75" r="70" fill="#fff8ef" stroke="#9e2229" stroke-width="2"/><circle cx="75" cy="75" r="62" fill="none" stroke="#b98462" stroke-width="1" stroke-dasharray="2 3"/><text x="75" y="86" text-anchor="middle" font-size="62" font-family="Georgia" font-weight="700" fill="#9e2229">7</text><text x="75" y="113" text-anchor="middle" font-size="18" font-weight="800" fill="#9e2229">DÍAS</text></svg>
+    <h2>Garantía de 7 días, sin riesgo</h2>
+    <p>Pruébala. Si no es para ti, solicita el reembolso en Hotmart dentro de los 7 días posteriores a tu compra.</p>
+  </div></section>
+  <section class="section"><div class="wrap faq"><h2>Preguntas frecuentes</h2>
 <details><summary>¿Cómo recibo los archivos?</summary><p>Hotmart te envía un correo con acceso a tu área de miembros cuando se confirma el pago.</p></details>
-<details><summary>¿Reemplaza a un profesional?</summary><p>No. Es material complementario y no sustituye el acompañamiento profesional.</p></details>
+<details><summary>¿Tengo que imprimir todo el material?</summary><p>Puedes imprimir solo las hojas que quieras usar. Los archivos están en formato PDF A4 y puedes llevarlos a una papelería si no tienes impresora en casa.</p></details>
+<details><summary>¿Puedo usar las actividades en una pantalla?</summary><p>Sí. Abre el PDF en una tableta o computadora. Para los ejercicios escritos, puedes anotar las respuestas en una hoja aparte.</p></details>
+<details><summary>A mi mamá o papá no se le dan bien las tecnologías. ¿Tengo que estar a su lado todo el tiempo?</summary><p>Una vez impresa, la hoja se usa como cualquier hoja de papel. Puedes acompañarlo o dejar que la haga a su ritmo.</p></details>
+<details><summary>¿Por cuál cuaderno conviene empezar?</summary><p>Puedes empezar por la habilidad que más les interese. Elige una actividad sencilla y avanza a su ritmo.</p></details>
+<details><summary>Me da miedo que el diseño parezca para niños. ¿Cómo está hecho?</summary><p>Letra grande, buen contraste e imágenes de la vida cotidiana, con un diseño pensado para adultos.</p></details>
+<details><summary>¿Los tres bonos están incluidos en la compra?</summary><p>Sí. El paquete completo incluye Juegos en familia, Hábitos saludables en la vida diaria y Cuidar con respeto.</p></details>
+<details><summary>¿El pago es único?</summary><p>Sí. Haces un solo pago por el paquete completo. No hay suscripción.</p></details>
+<details><summary>¿Cómo solicito un reembolso?</summary><p>Puedes solicitarlo en Hotmart dentro de los 7 días posteriores a tu compra. Ten a mano el correo de confirmación.</p></details>
+<details><summary>¿Para quién es?</summary><p>El material está pensado para personas mayores y quienes las acompañan en casa o en su trabajo.</p></details>
 </div></section>
-<section class="section final"><div class="wrap stack"><h2>Empieza hoy con tu mamá o papá</h2><p class="final-terms">US$ 5,90 · pago único · Garantía de 7 días</p><a class="button js-checkout" href="https://pay.hotmart.com/Q108457565F?checkoutMode=10"><span>Quiero la colección por US$ 5,90</span><svg class="icon arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a><p class="final-timer"><span class="clock" data-clock aria-live="off" aria-label="Temporizador de esta visita">28:00</span></p></div></section>
 </main>
 <footer class="legal"><div class="wrap"><p>Material complementario de estimulación cognitiva. No sustituye el acompañamiento profesional. Los resultados pueden variar.</p><nav aria-label="Información legal"><span>Términos de compra</span><span>Privacidad</span><!-- FALTA: {{URL_TÉRMINOS_DE_COMPRA}} y {{URL_PRIVACIDAD}} --></nav></div></footer>
-<div class="sticky" id="mobile-buy" hidden><strong class="mobile-price">US$ 5,90</strong><a class="button js-checkout" href="https://pay.hotmart.com/Q108457565F?checkoutMode=10"><span>Comprar</span><svg class="icon arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a></div>
+<div class="sticky" id="mobile-buy" hidden><strong>US$ 5,90</strong><div><a class="button js-checkout" data-checkout href="https://pay.hotmart.com/Q108457565F?checkoutMode=10">Comprar PsicoVida →</a><p class="micro"><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg> Pago seguro por Hotmart · Garantía de 7 días</p></div></div>
+
 <script>
 (() => {
-  const MOSTRAR_VALOR_TOTAL = false;
-  const CUPOS_PCT = 74;
-  const TESTIMONIOS_MS = 3000;
-  const PAGINAS_MS = 4000;
-  if (MOSTRAR_VALOR_TOTAL) {
-    const template = document.getElementById('valor-total-template');
-    template.replaceWith(template.content.cloneNode(true));
-  }
+  const checkout = "https://pay.hotmart.com/Q108457565F?checkoutMode=10";
+  document.querySelectorAll('[data-checkout]').forEach(link => { link.href = checkout; });
+
+  const mobile = matchMedia('(max-width: 767px)');
+  const sticky = document.getElementById('mobile-buy');
+  function showMobileBar() { sticky.hidden = !mobile.matches || scrollY < 700; }
+  addEventListener('scroll', showMobileBar, {passive: true});
+  mobile.addEventListener('change', showMobileBar);
+  showMobileBar();
+
   const duration = 28 * 60 * 1000;
-  const key = 'psicovida.visitEnd';
+  const storageKey = 'psicovida.visitEnd';
   let end = Date.now() + duration;
   try {
-    localStorage.setItem(key, String(end));
-    end = Number(localStorage.getItem(key)) || end;
+    localStorage.setItem(storageKey, String(end));
+    end = Number(localStorage.getItem(storageKey)) || end;
   } catch {}
   const clocks = document.querySelectorAll('[data-clock]');
+  const slots = 74;
+  document.querySelectorAll('[data-slots-progress]').forEach(progress => { progress.value = slots; });
+  document.querySelectorAll('[data-slots-copy]').forEach(copy => {
+    copy.textContent = slots + '% de los cupos de lanzamiento ya fueron tomados · Quedan pocos';
+  });
+
   let ticker;
   function tick() {
-    const seconds = Math.max(0, Math.ceil((end - Date.now()) / 1000));
-    const text = [Math.floor(seconds / 60), seconds % 60]
-      .map(part => String(part).padStart(2, '0')).join(':');
+    const left = Math.max(0, Math.ceil((end - Date.now()) / 1000));
+    const minutes = String(Math.floor(left / 60)).padStart(2, '0');
+    const seconds = String(left % 60).padStart(2, '0');
     clocks.forEach(clock => {
-      if (clock.hasAttribute('data-boxed')) {
-        const [minutes, seconds] = text.split(':');
-        const [minuteBox, secondBox] = clock.querySelectorAll('b');
-        minuteBox.textContent = minutes;
-        secondBox.textContent = seconds;
-      } else {
-        clock.textContent = text;
+      if (!clock.hasAttribute('data-boxed')) {
+        clock.textContent = minutes + ':' + seconds;
+        return;
       }
+      const [mm, ss] = clock.querySelectorAll('b');
+      mm.textContent = minutes;
+      ss.textContent = seconds;
     });
-    if (!seconds) clearInterval(ticker);
+    if (!left) clearInterval(ticker);
   }
   ticker = setInterval(tick, 250);
   tick();
-  document.getElementById('slots-progress').value = CUPOS_PCT;
-  document.getElementById('slots-copy').textContent =
-    CUPOS_PCT + '% de los cupos de lanzamiento ya fueron tomados · Quedan pocos';
 
-  const buy = document.getElementById('mobile-buy');
-  function updateBuy() {
-    const height = document.documentElement.scrollHeight - innerHeight -
-      (buy.classList.contains('is-visible') ? buy.offsetHeight : 0);
-    const visible = matchMedia('(max-width: 699px)').matches && height > 0 && scrollY >= height * .30;
-    buy.hidden = !visible;
-    buy.classList.toggle('is-visible', visible);
-  }
-  addEventListener('scroll', updateBuy, {passive: true});
-  addEventListener('resize', updateBuy);
-  addEventListener('load', updateBuy);
-  updateBuy();
+  const carouselInterval = 2000;
+  document.querySelectorAll('.single-slide-rail').forEach(rail => {
+    const slides = Array.from(rail.children);
+    if (slides.length < 2) return;
 
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  document.querySelectorAll('[data-rotator]').forEach(rotator => {
-    const grid = rotator.querySelector('.rotator-grid');
-    const frames = Array.from(grid.children);
-    const dots = Array.from(rotator.querySelector('.dots').children);
-    const delay = rotator.dataset.rotator === 'testimonios' ? TESTIMONIOS_MS : PAGINAS_MS;
-    let current = 0;
-    let interval;
+    const dots = document.createElement('div');
+    dots.className = 'carousel-dots';
+    dots.setAttribute('aria-hidden', 'true');
+    const indicators = slides.map(() => document.createElement('span'));
+    dots.append(...indicators);
+    rail.after(dots);
+
+    let index = 0;
+    let timer;
     let inView = false;
-
-    function render() {
-      frames.forEach((frame, index) => {
-        frame.classList.toggle('active', index === current);
-        if (reduced.matches) frame.removeAttribute('aria-hidden');
-        else frame.setAttribute('aria-hidden', String(index !== current));
-        dots[index].classList.toggle('active', index === current);
+    let dragStart;
+    function show(position) {
+      index = (position + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('is-current', i === index);
+        slide.setAttribute('aria-hidden', String(i !== index));
+        indicators[i].classList.toggle('active', i === index);
       });
     }
-    function sync() {
-      clearInterval(interval);
-      if (!inView || reduced.matches || document.hidden) return;
-      interval = setInterval(() => {
-        current = (current + 1) % frames.length;
-        render();
-      }, delay);
+    function restart() {
+      clearInterval(timer);
+      if (inView && !document.hidden) timer = setInterval(() => show(index + 1), carouselInterval);
     }
+    function navigate(direction) {
+      show(index + direction);
+      restart();
+    }
+
+    show(0);
+    rail.classList.add('is-playing');
     new IntersectionObserver(([entry]) => {
-      inView = entry.isIntersecting && entry.intersectionRatio >= .5;
-      sync();
-    }, {threshold: .5}).observe(grid);
-    reduced.addEventListener('change', () => { render(); sync(); });
-    document.addEventListener('visibilitychange', sync);
-    render();
+      inView = entry.isIntersecting;
+      restart();
+    }).observe(rail);
+    document.addEventListener('visibilitychange', restart);
+
+    rail.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      navigate(event.key === 'ArrowLeft' ? -1 : 1);
+    });
+    rail.addEventListener('pointerdown', event => {
+      if (!event.isPrimary || event.button !== 0) return;
+      dragStart = event.clientX;
+      rail.setPointerCapture(event.pointerId);
+    });
+    rail.addEventListener('pointerup', event => {
+      if (dragStart === undefined) return;
+      const distance = event.clientX - dragStart;
+      dragStart = undefined;
+      if (Math.abs(distance) >= 25) navigate(distance < 0 ? 1 : -1);
+    });
+    rail.addEventListener('pointercancel', () => { dragStart = undefined; });
   });
 })();
 </script>
