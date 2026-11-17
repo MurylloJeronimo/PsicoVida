@@ -26,8 +26,8 @@ FALTA: {{DOMINIO_FINAL}} si se usa un dominio propio.
 <meta name="description" content="Seis cuadernos imprimibles con 240 ejercicios de estimulación cognitiva para personas mayores. Letra grande, soluciones y tres bonos incluidos.">
 <link rel="icon" href="assets/favicon.ico">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preload" as="image" href="img/hero-mockup.webp" imagesrcset="img/hero-mockup-800.webp 800w, img/hero-mockup.webp 1600w" imagesizes="(min-width: 768px) 94vw, 100vw" media="(width < 1024px)">
-<link rel="preload" as="image" href="img/hero-mockup-desktop.webp" media="(min-width: 1024px)">
+<link rel="preload" as="image" href="img/hero-mobile-800-d7a29f66.webp" imagesrcset="img/hero-mobile-800-d7a29f66.webp 800w, img/hero-mobile-1200-192e975c.webp 1200w, img/hero-mobile-1600-ef3a45e9.webp 1600w" imagesizes="(min-width: 768px) 94vw, 100vw" media="(max-width: 1023px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero-desktop-1600-efab8da4.webp" imagesrcset="img/hero-desktop-1600-efab8da4.webp 1600w, img/hero-desktop-2400-dfbf27ae.webp 2400w" imagesizes="(min-width: 1596px) 1500px, 94vw" media="(min-width: 1024px)" fetchpriority="high">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es">
 <meta property="og:title" content="PsicoVida | 240 ejercicios para la mente">
@@ -118,11 +118,11 @@ h1,h2{font-family:var(--serif);line-height:1.1;text-wrap:balance;letter-spacing:
       <p>240 ejercicios con letra grande, listos para imprimir.</p>
     </div>
     <picture class="hero-picture">
-      <source media="(min-width: 1024px)" srcset="img/hero-mockup-desktop.webp" width="2400" height="1200">
-      <img class="hero-image" src="img/hero-mockup.webp" srcset="img/hero-mockup-800.webp 800w, img/hero-mockup.webp 1600w" sizes="(min-width: 768px) 94vw, 100vw" width="1600" height="1600" fetchpriority="high" decoding="async" alt="Seis cuadernos y tres bonos de PsicoVida. Compra segura, acceso inmediato y garantía de 7 días.">
+      <source media="(min-width: 1024px)" srcset="img/hero-desktop-1600-efab8da4.webp 1600w, img/hero-desktop-2400-dfbf27ae.webp 2400w" sizes="(min-width: 1596px) 1500px, 94vw" width="2400" height="1200">
+      <img class="hero-image" src="img/hero-mobile-1600-ef3a45e9.webp" srcset="img/hero-mobile-800-d7a29f66.webp 800w, img/hero-mobile-1200-192e975c.webp 1200w, img/hero-mobile-1600-ef3a45e9.webp 1600w" sizes="(min-width: 768px) 94vw, 100vw" width="1600" height="1600" fetchpriority="high" decoding="async" alt="Seis cuadernos y tres bonos de PsicoVida. Compra segura, acceso inmediato y garantía de 7 días.">
     </picture>
     <div class="wrap hero-copy hero-action">
-      <a class="button pulse" href="#bonos">🎁 Quiero garantizar mi bono</a>
+      <a class="button pulse js-checkout" data-checkout href="https://pay.hotmart.com/Q108457565F?checkoutMode=10">🎁 Quiero garantizar mi bono</a>
     </div>
   </header>
   <section class="section tint" id="para-quien" aria-labelledby="audience-title">
@@ -204,8 +204,6 @@ h1,h2{font-family:var(--serif);line-height:1.1;text-wrap:balance;letter-spacing:
 
 <script>
 (() => {
-  const checkout = "https://pay.hotmart.com/Q108457565F?checkoutMode=10";
-  document.querySelectorAll('[data-checkout]').forEach(link => { link.href = checkout; });
 
   const mobile = matchMedia('(max-width: 767px)');
   const sticky = document.getElementById('mobile-buy');
@@ -218,8 +216,8 @@ h1,h2{font-family:var(--serif);line-height:1.1;text-wrap:balance;letter-spacing:
   const storageKey = 'psicovida.visitEnd';
   let end = Date.now() + duration;
   try {
-    localStorage.setItem(storageKey, String(end));
-    end = Number(localStorage.getItem(storageKey)) || end;
+    const saved = Number(localStorage.getItem(storageKey));
+    if (saved > 0) { end = saved; } else { localStorage.setItem(storageKey, String(end)); }
   } catch {}
   const clocks = document.querySelectorAll('[data-clock]');
   const slots = 74;
@@ -247,7 +245,6 @@ h1,h2{font-family:var(--serif);line-height:1.1;text-wrap:balance;letter-spacing:
   ticker = setInterval(tick, 250);
   tick();
 
-  const carouselInterval = 2000;
   document.querySelectorAll('.single-slide-rail').forEach(rail => {
     const slides = Array.from(rail.children);
     if (slides.length < 2) return;
@@ -262,7 +259,6 @@ h1,h2{font-family:var(--serif);line-height:1.1;text-wrap:balance;letter-spacing:
     let index = 0;
     let timer;
     let inView = false;
-    let dragStart;
     function show(position) {
       index = (position + slides.length) % slides.length;
       slides.forEach((slide, i) => {
@@ -273,7 +269,7 @@ h1,h2{font-family:var(--serif);line-height:1.1;text-wrap:balance;letter-spacing:
     }
     function restart() {
       clearInterval(timer);
-      if (inView && !document.hidden) timer = setInterval(() => show(index + 1), carouselInterval);
+      if (inView && !document.hidden) timer = setInterval(() => show(index + 1), rail.classList.contains('pages') ? 4000 : 3000);
     }
     function navigate(direction) {
       show(index + direction);
@@ -288,23 +284,6 @@ h1,h2{font-family:var(--serif);line-height:1.1;text-wrap:balance;letter-spacing:
     }).observe(rail);
     document.addEventListener('visibilitychange', restart);
 
-    rail.addEventListener('keydown', event => {
-      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-      event.preventDefault();
-      navigate(event.key === 'ArrowLeft' ? -1 : 1);
-    });
-    rail.addEventListener('pointerdown', event => {
-      if (!event.isPrimary || event.button !== 0) return;
-      dragStart = event.clientX;
-      rail.setPointerCapture(event.pointerId);
-    });
-    rail.addEventListener('pointerup', event => {
-      if (dragStart === undefined) return;
-      const distance = event.clientX - dragStart;
-      dragStart = undefined;
-      if (Math.abs(distance) >= 25) navigate(distance < 0 ? 1 : -1);
-    });
-    rail.addEventListener('pointercancel', () => { dragStart = undefined; });
   });
 })();
 </script>
