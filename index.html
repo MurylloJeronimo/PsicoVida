@@ -28,8 +28,39 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
+    // Keep the SDK ready for funnel events; UTMify owns the automatic PageView.
+    // Its integration may request this same pixel's initialization again.
+    (function () {
+      if (window.__psicoMetaInitGuard) return;
+      const original = window.fbq;
+      const initialized = new Set();
+      if (original.queue) {
+        Array.from(original.queue).forEach(function (call) {
+          if (call[0] === 'init') initialized.add(String(call[1]));
+        });
+      }
+      if (typeof original.getState === 'function') {
+        const state = original.getState();
+        if (state && Array.isArray(state.pixels)) {
+          state.pixels.forEach(function (pixel) { initialized.add(String(pixel.id)); });
+        }
+      }
+      window.fbq = new Proxy(original, {
+        apply: function (target, thisArg, args) {
+          if (args[0] === 'init') {
+            const id = String(args[1]);
+            if (initialized.has(id)) return;
+            const result = Reflect.apply(target, thisArg, args);
+            initialized.add(id);
+            return result;
+          }
+          return Reflect.apply(target, thisArg, args);
+        }
+      });
+      if (window._fbq === original) window._fbq = window.fbq;
+      window.__psicoMetaInitGuard = true;
+    })();
     fbq('init', '1105046889187470');
-    fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1105046889187470&ev=PageView&noscript=1" alt="">
@@ -2043,7 +2074,7 @@
       <section class="proof-carousel" role="region" aria-label="Mensajes reales de clientes" aria-roledescription="carrusel" tabindex="0" data-proof-stage="5">
         <h3 class="proof-carousel-title">Lo que dicen quienes ya lo imprimieron</h3>
         <div class="proof-carousel-window">
-          <div class="proof-carousel-viewport"><div class="proof-carousel-track"><div class="proof-carousel-slide" role="group" aria-label="Mensaje 1 de 5"><img src="assets/testimonio-1.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 1"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 2 de 5"><img src="assets/testimonio-2.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 2"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 3 de 5"><img src="assets/testimonio-3.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 3"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 4 de 5"><img src="assets/testimonio-4.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 4"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 5 de 5"><img src="assets/testimonio-5.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 5"></div></div></div>
+          <div class="proof-carousel-viewport"><div class="proof-carousel-track"><div class="proof-carousel-slide" role="group" aria-label="Mensaje 1 de 5"><img data-proof-src="assets/testimonio-1.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 1"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 2 de 5"><img data-proof-src="assets/testimonio-2.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 2"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 3 de 5"><img data-proof-src="assets/testimonio-3.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 3"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 4 de 5"><img data-proof-src="assets/testimonio-4.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 4"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 5 de 5"><img data-proof-src="assets/testimonio-5.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 5"></div></div></div>
           <button class="proof-carousel-arrow proof-carousel-prev" type="button" aria-label="Ver mensaje anterior">‹</button>
           <button class="proof-carousel-arrow proof-carousel-next" type="button" aria-label="Ver mensaje siguiente">›</button>
         </div>
@@ -2213,7 +2244,7 @@
       <section class="proof-carousel" role="region" aria-label="Mensajes reales de clientes" aria-roledescription="carrusel" tabindex="0" data-proof-stage="8">
         <h3 class="proof-carousel-title">Clientes reales ya lo usan</h3>
         <div class="proof-carousel-window">
-          <div class="proof-carousel-viewport"><div class="proof-carousel-track"><div class="proof-carousel-slide" role="group" aria-label="Mensaje 1 de 5"><img src="assets/testimonio-1.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 1"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 2 de 5"><img src="assets/testimonio-2.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 2"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 3 de 5"><img src="assets/testimonio-3.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 3"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 4 de 5"><img src="assets/testimonio-4.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 4"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 5 de 5"><img src="assets/testimonio-5.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 5"></div></div></div>
+          <div class="proof-carousel-viewport"><div class="proof-carousel-track"><div class="proof-carousel-slide" role="group" aria-label="Mensaje 1 de 5"><img data-proof-src="assets/testimonio-1.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 1"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 2 de 5"><img data-proof-src="assets/testimonio-2.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 2"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 3 de 5"><img data-proof-src="assets/testimonio-3.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 3"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 4 de 5"><img data-proof-src="assets/testimonio-4.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 4"></div><div class="proof-carousel-slide" role="group" aria-label="Mensaje 5 de 5"><img data-proof-src="assets/testimonio-5.webp" width="800" height="1422" loading="lazy" decoding="async" alt="Mensaje real de una clienta de PsicoVida 5"></div></div></div>
           <button class="proof-carousel-arrow proof-carousel-prev" type="button" aria-label="Ver mensaje anterior">‹</button>
           <button class="proof-carousel-arrow proof-carousel-next" type="button" aria-label="Ver mensaje siguiente">›</button>
         </div>
@@ -3129,6 +3160,15 @@
       copy.querySelector('img').alt = '';
       track.prepend(copy);
     });
+    let imagesHydrated = false;
+    function hydrateImages() {
+      if (imagesHydrated) return;
+      imagesHydrated = true;
+      track.querySelectorAll('img[data-proof-src]').forEach(function (img) {
+        img.src = img.dataset.proofSrc;
+        img.removeAttribute('data-proof-src');
+      });
+    }
     function activeIndex() { return ((position % count) + count) % count; }
     function updateDots() {
       const index = activeIndex();
@@ -3248,6 +3288,7 @@
       entries.forEach(function (entry) {
         visible = entry.isIntersecting && entry.intersectionRatio >= .15;
         if (visible) {
+          hydrateImages();
           if (root.dataset.proofStage === '8' && !proofViewSent && typeof fbq === 'function') {
             proofViewSent = true;
             fbq('trackCustom', 'ProofView');
@@ -3258,6 +3299,15 @@
       });
     }, { threshold:[0, .15] });
     observer.observe(root);
+    // Native lazy images may load while cloned off-screen; withhold their URLs
+    // until this instance approaches the screen, then keep the existing behavior.
+    const imageObserver = new IntersectionObserver(function (entries) {
+      if (entries.some(function (entry) { return entry.isIntersecting; })) {
+        hydrateImages();
+        imageObserver.disconnect();
+      }
+    }, { rootMargin:'600px 0px', threshold:0 });
+    imageObserver.observe(root);
     new ResizeObserver(layout).observe(viewport);
     layout();
   });
